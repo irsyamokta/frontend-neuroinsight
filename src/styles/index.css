@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import "tailwindcss";
+
+@theme {
+	--font-outfit: Plus Jakarta Sans, sans-serif;
+
+	--breakpoint-*: initial;
+	--breakpoint-2xsm: 375px;
+	--breakpoint-xsm: 425px;
+	--breakpoint-3xl: 2000px;
+	--breakpoint-sm: 640px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1280px;
+	--breakpoint-2xl: 1536px;
+
+	--text-title-2xl: 72px;
+	--text-title-2xl--line-height: 90px;
+	--text-title-xl: 60px;
+	--text-title-xl--line-height: 72px;
+	--text-title-lg: 48px;
+	--text-title-lg--line-height: 60px;
+	--text-title-md: 36px;
+	--text-title-md--line-height: 44px;
+	--text-title-sm: 30px;
+	--text-title-sm--line-height: 38px;
+	--text-theme-xl: 20px;
+	--text-theme-xl--line-height: 30px;
+	--text-theme-sm: 14px;
+	--text-theme-sm--line-height: 20px;
+	--text-theme-xs: 12px;
+	--text-theme-xs--line-height: 18px;
+
+	--color-primary: #0D7DC1;
+	--color-secondary: #196FEB;
+	--color-accent: #f5f5f5;
+
+	--color-current: currentColor;
+	--color-transparent: transparent;
+	--color-white: #ffffff;
+	--color-black: #101828;
+
+    --color-orange: #fffaf5;
+    --color-magenta: #fffaf5;
+    --color-purple: #fffaf5;
+    --color-brown: #fffaf5;
+
+	--color-gray-25: #fcfcfd;
+	--color-gray-50: #f9fafb;
+	--color-gray-100: #f8f9fa;
+	--color-gray-200: #e9ecef;
+	--color-gray-300: #dee2e6;
+	--color-gray-400: #ced4da;
+	--color-gray-500: #adb5bd;
+	--color-gray-600: #6c757d;
+	--color-gray-700: #495057;
+	--color-gray-800: #343a40;
+	--color-gray-900: #212529;
+	--color-gray-950: #0c111d;
+	--color-gray-dark: #1a2231;
+
+	--color-success: #048C51;
+	--color-error: #C00A0A;
+	--color-warning: #BD9300;
+
+	--color-theme-pink-500: #ee46bc;
+
+	--color-theme-purple-500: #7a5af8;
+
+	--shadow-theme-md: 0px 4px 8px -2px rgba(16, 24, 40, 0.1),
+		0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+	--shadow-theme-lg: 0px 12px 16px -4px rgba(16, 24, 40, 0.08),
+		0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+	--shadow-theme-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
+		0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+	--shadow-theme-xs: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+	--shadow-theme-xl: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
+		0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+	--shadow-datepicker: -5px 0 0 #262d3c, 5px 0 0 #262d3c;
+	--shadow-focus-ring: 0px 0px 0px 4px rgba(70, 95, 255, 0.12);
+	--shadow-slider-navigation: 0px 1px 2px 0px rgba(16, 24, 40, 0.1),
+		0px 1px 3px 0px rgba(16, 24, 40, 0.1);
+	--shadow-tooltip: 0px 4px 6px -2px rgba(16, 24, 40, 0.05),
+		-8px 0px 20px 8px rgba(16, 24, 40, 0.05);
+
+	--drop-shadow-4xl: 0 35px 35px rgba(0, 0, 0, 0.25),
+		0 45px 65px rgba(0, 0, 0, 0.15);
+
+	--z-index-1: 1;
+	--z-index-9: 9;
+	--z-index-99: 99;
+	--z-index-999: 999;
+	--z-index-9999: 9999;
+	--z-index-99999: 99999;
+	--z-index-999999: 999999;
+}
+
+@layer base {
+    *,
+    *::before,
+    *::after {
+        @apply box-border border-none m-0 p-0 font-outfit scroll-smooth;
+    }
+}
