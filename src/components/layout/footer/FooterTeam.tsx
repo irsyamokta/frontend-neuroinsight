@@ -1,5 +1,8 @@
 import React from "react";
 import TeamMemberCard from "./components/TeamMemberCard";
+import Image1 from "../../../assets/member/member-1.png";
+import Image2 from "../../../assets/member/member-2.png";
+import Image3 from "../../../assets/member/member-3.png";
 
 const members: string[] = [
     "Irsyam Okta Pratama Riyadi",
@@ -10,9 +13,9 @@ const members: string[] = [
 const roles: string[] = ["Leader", "Member", "Member"];
 
 const images: string[] = [
-    "/src/assets/member/member-1.png",
-    "/src/assets/member/member-2.png",
-    "/src/assets/member/member-3.png",
+    Image1,
+    Image2,
+    Image3
 ]
 
 const FooterTeam: React.FC = () => {

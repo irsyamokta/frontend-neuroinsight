@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Accordion from "../../components/ui/accordion/Accordion";
 import Label from "../../components/ui/label/Label";
 import { TbFileUpload, TbSearch, TbFileText } from "react-icons/tb";
+import Image1 from "../../assets/img/img-4.png";
+import Image2 from "../../assets/img/img-5.png";
+import Image3 from "../../assets/img/img-6.png";
 
 const HowItWork: React.FC = () => {
     const [activeAccordion, setActiveAccordion] = useState("upload");
@@ -13,7 +16,7 @@ const HowItWork: React.FC = () => {
             description:
                 "Pengguna mengunggah citra MRI otak melalui halaman demo. Sistem mendukung format gambar umum seperti JPG, JPEG dan PNG dengan ukuran maksimum 10MB. Proses unggah ini dirancang agar cepat dan mudah.",
             icon: <TbFileUpload size={32} className="text-primary text-lg mt-1 -ml-1" />,
-            image: "/src/assets/img/img-4.png",
+            image: Image1,
         },
         {
             id: "process",
@@ -21,7 +24,7 @@ const HowItWork: React.FC = () => {
             description:
                 "Gambar yang diunggah akan diproses oleh model deep learning yang telah dilatih menggunakan ribuan citra MRI otak. Model ini mengekstraksi fitur penting dari gambar dan menganalisisnya untuk mengidentifikasi pola tumor.",
             icon: <TbSearch size={32} className="text-primary text-lg mt-1 -ml-1" />,
-            image: "/src/assets/img/img-5.png",
+            image: Image2,
         },
         {
             id: "predict",
@@ -29,7 +32,7 @@ const HowItWork: React.FC = () => {
             description:
                 "Sistem akan menampilkan hasil klasifikasi berupa jenis tumor (Glioma, Meningioma, Pituitary, atau No Tumor) beserta tingkat kepercayaan prediksi (confidence score dalam persen), serta penjelasan singkat dari hasil tersebut.",
             icon: <TbFileText size={32} className="text-primary text-lg mt-1 -ml-1" />,
-            image: "/src/assets/img/img-6.png",
+            image: Image3,
         },
     ];
 
