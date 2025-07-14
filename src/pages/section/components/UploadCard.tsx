@@ -25,7 +25,7 @@ const UploadCard = ({ handlePredict, setImage, status, setState }: UploadCardPro
         <div className="col-span-10 lg:col-span-4 bg-white p-6 rounded-xl border border-gray-400 flex flex-col h-full">
             <h2 className="text-lg font-semibold mb-5 flex items-center justify-between relative">
                 Unggah gambar MRI
-                <Dropdown text="Unduh sample data" link="https://google.com" />
+                <Dropdown text="Unduh sample data" link="https://drive.google.com/drive/folders/1lEy9tExn1MA45ruU7F45de-tRNzBmVc3?usp=sharing" />
             </h2>
 
             <label className="w-full h-[350px] lg:h-[450px] bg-blue-50 border-4 border-dashed border-primary hover:border-secondary rounded-xl mb-4 cursor-pointer overflow-hidden flex items-center justify-center">

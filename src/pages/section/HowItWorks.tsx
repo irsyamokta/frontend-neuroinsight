@@ -11,9 +11,9 @@ const HowItWork: React.FC = () => {
             id: "upload",
             title: "Unggah Gambar MRI",
             description:
-                "Pengguna mengunggah citra MRI otak melalui halaman demo. Sistem mendukung format gambar umum seperti JPG dan PNG dengan ukuran maksimum 5MB. Proses unggah ini dirancang agar cepat dan mudah.",
+                "Pengguna mengunggah citra MRI otak melalui halaman demo. Sistem mendukung format gambar umum seperti JPG, JPEG dan PNG dengan ukuran maksimum 10MB. Proses unggah ini dirancang agar cepat dan mudah.",
             icon: <TbFileUpload size={32} className="text-primary text-lg mt-1 -ml-1" />,
-            image: "/src/assets/img/img-1.png",
+            image: "/src/assets/img/img-4.png",
         },
         {
             id: "process",
@@ -21,7 +21,7 @@ const HowItWork: React.FC = () => {
             description:
                 "Gambar yang diunggah akan diproses oleh model deep learning yang telah dilatih menggunakan ribuan citra MRI otak. Model ini mengekstraksi fitur penting dari gambar dan menganalisisnya untuk mengidentifikasi pola tumor.",
             icon: <TbSearch size={32} className="text-primary text-lg mt-1 -ml-1" />,
-            image: "/src/assets/img/img-2.png",
+            image: "/src/assets/img/img-5.png",
         },
         {
             id: "predict",
@@ -29,7 +29,7 @@ const HowItWork: React.FC = () => {
             description:
                 "Sistem akan menampilkan hasil klasifikasi berupa jenis tumor (Glioma, Meningioma, Pituitary, atau No Tumor) beserta tingkat kepercayaan prediksi (confidence score dalam persen), serta penjelasan singkat dari hasil tersebut.",
             icon: <TbFileText size={32} className="text-primary text-lg mt-1 -ml-1" />,
-            image: "/images/predict.png",
+            image: "/src/assets/img/img-6.png",
         },
     ];
 
@@ -68,12 +68,12 @@ const HowItWork: React.FC = () => {
 
                     {/* Gambar */}
                     <div className="flex items-center justify-center">
-                        <div className="bg-gray-200 w-full h-80 md:min-h-[455px] rounded-xl flex items-center justify-start overflow-hidden">
+                        <div className="bg-gray-25 w-full h-80 md:min-h-[455px] rounded-xl flex items-center justify-start overflow-hidden">
                             {currentImage ? (
                                 <img
                                     src={currentImage}
                                     alt="Accordion content"
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-contain"
                                 />
                             ) : (
                                 <span className="text-gray-400 text-sm">Pilih salah satu langkah</span>

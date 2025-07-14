@@ -8,9 +8,10 @@ interface ResultCardProps {
     status: string;
     loading: number;
     prediction?: any;
+    imageUrl: string;
 }
 
-const ResultCard = ({ status, loading, prediction }: ResultCardProps) => {
+const ResultCard = ({ status, loading, prediction, imageUrl }: ResultCardProps) => {
     const [showFinalResult, setShowFinalResult] = useState(false);
 
     useEffect(() => {
@@ -63,7 +64,7 @@ const ResultCard = ({ status, loading, prediction }: ResultCardProps) => {
         }
 
         if (status === 'success' && showFinalResult && prediction) {
-            return <PredictionResult prediction={prediction} />;
+            return <PredictionResult prediction={prediction} imagePreview={imageUrl}/>;
         }
     };
 

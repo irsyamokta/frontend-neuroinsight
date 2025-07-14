@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import Chart from 'react-apexcharts';
 import { format } from 'date-fns';
 import { id } from 'date-fns/locale';
 import Button from '../../../components/ui/button/Button';
+import PredictionPDF from '../../../components/pdf/PredictionPDF';
 
 interface Props {
     prediction: any;
+    imagePreview: string;
 }
 
-const PredictionResult: React.FC<Props> = ({ prediction }) => {
+const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
+    const [doctorNote, setDoctorNote] = useState('');
 
     const {
         predicted_class,
@@ -88,27 +92,51 @@ const PredictionResult: React.FC<Props> = ({ prediction }) => {
 
             {/* Insight */}
             <div className="flex flex-col items-start mb-5">
-                <h4 className="font-semibold text-gray-600 mb-1">Insight Klasifikasi</h4>
-                <p className="text-sm sm:text-base">{information.description}</p>
+                <h4 className="text-lg font-semibold text-gray-600 mb-3">Insight Klasifikasi</h4>
+                <p className="text-start text-sm sm:text-base">{information.description}</p>
+            </div>
+
+            {/* Doctor Note */}
+            <div className="mb-6">
+                <label htmlFor="note" className="block text-start text-sm sm:text-base font-semibold text-gray-600 mb-2">
+                    Catatan Dokter
+                </label>
+                <textarea
+                    id="note"
+                    rows={4}
+                    className="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none"
+                    placeholder="Tulis catatan dokter di sini..."
+                    value={doctorNote}
+                    onChange={(e) => setDoctorNote(e.target.value)}
+                />
             </div>
 
             {/* Download Button */}
             <div className="w-full flex justify-end">
-                <Button
-                    size="lg"
-                    className="text-sm px-3 py-1.5"
-                    onClick={() => {
-                        const blob = new Blob([JSON.stringify(prediction, null, 2)], { type: 'application/json' });
-                        const url = URL.createObjectURL(blob);
-                        const link = document.createElement('a');
-                        link.href = url;
-                        link.download = `hasil_prediksi_${predicted_class}.json`;
-                        link.click();
-                        URL.revokeObjectURL(url);
-                    }}
+                <PDFDownloadLink
+                    document={
+                        <PredictionPDF
+                            prediction={prediction}
+                            imageUrl={imagePreview}
+                            doctorNote={doctorNote}
+                            timestamp={formattedDate + ' ' + formattedTime}
+                        />
+                    }
+                    fileName={`hasil_prediksi_${prediction.predicted_class}_${new Date().toISOString().slice(0, 10)}.pdf`}
                 >
-                    Unduh Hasil
-                </Button>
+                    {({ loading }) => (
+                        <Button
+                            disabled={loading || doctorNote.trim() === ''}
+                            size="lg"
+                            className="text-sm px-3 py-1.5"
+                        >
+                            {loading
+                                ? 'Unduh Hasil' : doctorNote.trim() === ''
+                                    ? 'Isi Catatan Dulu'
+                                    : 'Unduh Hasil'}
+                        </Button>
+                    )}
+                </PDFDownloadLink>
             </div>
         </div>
     );

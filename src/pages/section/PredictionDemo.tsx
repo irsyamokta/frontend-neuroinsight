@@ -67,7 +67,7 @@ const PredictionDemoSection: React.FC = () => {
                     />
 
                     {/* Prediction Result */}
-                    <ResultCard status={status} loading={loadingStep} prediction={prediction} />
+                    <ResultCard status={status} loading={loadingStep} prediction={prediction} imageUrl={image ? URL.createObjectURL(image) : ''} />
                 </div>
             </div>
         </section>
