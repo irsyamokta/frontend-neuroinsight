@@ -1,6 +1,6 @@
 import ConfusionMatrix from "../chart/ConfusionMatrix";
 import ValidationAccuracy from "../chart/ValidationAccuracy";
-import ClassificationReport from "../table/ClassificationReport";
+import ClassificationReport from "../chart/ClassificationReport";
 import InfoCard from "./InfoCard";
 
 const cardPerformance = [
