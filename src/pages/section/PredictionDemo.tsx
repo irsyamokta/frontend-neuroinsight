@@ -7,7 +7,7 @@ import ResultCard from './components/ResultCard';
 const PredictionDemoSection: React.FC = () => {
     const [image, setImage] = useState<File | null>(null);
     const [prediction, setPrediction] = useState<any>(null);
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'failed'>('idle');
     const [loadingStep, setLoadingStep] = useState(0);
 
     const loadingMessages = [
@@ -36,9 +36,9 @@ const PredictionDemoSection: React.FC = () => {
 
             await new Promise((resolve) => setTimeout(resolve, 3000));
             setStatus('success');
-        } catch (error) {
-            console.error('Gagal mengirim prediksi:', error);
-            setStatus('idle');
+        } catch (error: any) {
+            console.error('Gagal mengirim prediksi:', error.message);
+            setStatus('failed');
         }
     };
 

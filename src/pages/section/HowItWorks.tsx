@@ -70,7 +70,7 @@ const HowItWork: React.FC = () => {
                     </div>
 
                     {/* Gambar */}
-                    <div className="flex items-center justify-center">
+                    <div className="hidden sm:flex items-center justify-center">
                         <div className="bg-gray-25 w-full h-80 md:min-h-[455px] rounded-xl flex items-center justify-start overflow-hidden">
                             {currentImage ? (
                                 <img

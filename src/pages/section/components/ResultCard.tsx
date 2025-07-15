@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FaRegStickyNote } from 'react-icons/fa';
 import { CgSandClock } from "react-icons/cg";
-import { VscVerified } from "react-icons/vsc";
+import { VscError, VscVerified } from "react-icons/vsc";
 import PredictionResult from './PredictionResult';
 
 interface ResultCardProps {
@@ -61,6 +61,17 @@ const ResultCard = ({ status, loading, prediction, imageUrl }: ResultCardProps) 
                     <p className="text-sm sm:text-base text-gray-600 mt-1">Hasil akan segera ditampilkan</p>
                 </>
             );
+        }
+
+        if(status === 'failed') {
+            return (
+                <>
+                    <VscError className="text-4xl sm:text-5xl text-red-600 mb-2" />
+                    <p className="text-sm sm:text-base font-semibold">Prediksi gagal!</p>
+                    <p className="text-sm sm:text-base text-gray-600 mt-1">Silakan coba lagi</p>
+                </>
+            );
+            
         }
 
         if (status === 'success' && showFinalResult && prediction) {
