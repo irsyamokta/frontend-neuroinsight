@@ -14,7 +14,7 @@ const HeroSection: React.FC = () => {
 
                 {/* Deskripsi */}
                 <p className="max-w-2xl text-base md:text-lg mb-6">
-                    Sistem ini membantu mengidentifikasi kemungkinan jenis tumor otak secara
+                    Sistem ini membantu dokter radiologi mengidentifikasi kemungkinan jenis tumor otak secara
                     cepat dan efisien berdasarkan citra MRI yang Anda unggah.
                 </p>
 

@@ -22,7 +22,7 @@ const AboutSection: React.FC = () => {
                         Mengenal NeuroInsight
                     </h2>
                     <p className="text-sm text-center sm:text-base lg:text-start leading-relaxed text-gray-700">
-                        NeuroInsight adalah platform web interaktif yang dirancang untuk membantu klasifikasi citra MRI otak ke dalam empat kategori utama, yaitu Glioma, Meningioma, Pituitary, dan No Tumor. Dengan memanfaatkan model Machine Learning yang telah dilatih menggunakan dataset MRI otak, platform ini menyediakan solusi awal yang cepat dan mudah diakses untuk mendukung proses identifikasi jenis tumor secara visual dan informatif dengan web-based demo.
+                        NeuroInsight adalah platform web interaktif yang dirancang untuk membantu dokter radiologi dalam mengklasifikasikan jenis tumor berdasarkan gambar citra MRI otak ke dalam empat kategori utama, yaitu Glioma, Meningioma, Pituitary, dan No Tumor. Platform ini memanfaatkan model Deep Learning berbasis Convolutional Neural Network (CNN) yang telah dilatih menggunakan dataset citra MRI otak, sehingga mampu mengenali pola visual pada jaringan otak dengan tingkat akurasi tinggi. NeuroInsight menyediakan solusi awal yang cepat, informatif, dan mudah diakses melalui web-based demo, guna mendukung proses identifikasi jenis tumor secara visual oleh dokter radiologi.
                     </p>
                 </div>
             </div>
