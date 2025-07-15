@@ -7,7 +7,7 @@ type PieChartProps = {
     height?: number;
 };
 
-const PieChart = ({ labels, series, colors, height = 400 }: PieChartProps) => {
+const PieChart = ({ labels, series, colors, height = 350 }: PieChartProps) => {
     return (
         <Chart
             options={{
@@ -17,8 +17,7 @@ const PieChart = ({ labels, series, colors, height = 400 }: PieChartProps) => {
                     position: "bottom",
                     horizontalAlign: "center",
                     floating: false,
-                    fontSize: "14px",
-                    offsetY: -3,
+                    fontSize: "12px",
                     itemMargin: {
                         horizontal: 5,
                         vertical: 4,
@@ -27,8 +26,8 @@ const PieChart = ({ labels, series, colors, height = 400 }: PieChartProps) => {
             }}
             series={series}
             type="pie"
-            width="100%"
             height={height}
+            className="w-xl"
         />
     );
 };

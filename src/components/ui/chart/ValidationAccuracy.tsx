@@ -29,13 +29,8 @@ const validationAccuracy = () => {
                         position: "bottom",
                         horizontalAlign: "center",
                         offsetY: 30,
-                        offsetX: -50,
                         floating: false,
                         fontSize: "14px",
-                        itemMargin: {
-                            horizontal: 5,
-                            vertical: 2,
-                        },
                     },
                 }}
                 series={[
@@ -44,7 +39,7 @@ const validationAccuracy = () => {
                 ]}
                 type="line"
                 width="100%"
-                height={400}
+                height={300}
             />
         </div>
     )
