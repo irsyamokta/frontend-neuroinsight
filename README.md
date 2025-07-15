@@ -1,69 +1,91 @@
-# React + TypeScript + Vite
+<div align="center">
+<img src="https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/logo-white.png" width="30%" height="30%" >
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Tentang
+Platform web interaktif yang dirancang untuk membantu dokter radiologi dalam mengklasifikasikan jenis tumor berdasarkan gambar citra MRI otak ke dalam empat kategori utama:
 
-Currently, two official plugins are available:
+- **Glioma**
+- **Meningioma**
+- **Pituitary**
+- **No Tumor**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Platform ini memanfaatkan **model Deep Learning berbasis Convolutional Neural Network (CNN)** yang telah dilatih menggunakan dataset citra MRI otak. CNN dipilih karena kemampuannya yang sangat baik dalam mengenali pola visual dan fitur-fitur kompleks pada citra medis, sehingga mendukung deteksi tumor dengan tingkat akurasi yang tinggi.  
 
-## Expanding the ESLint configuration
+## Fitur Utama
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Klasifikasi Otomatis Tumor Otak**  
+  Mengklasifikasikan citra MRI ke dalam empat kategori utama secara otomatis.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Berbasis CNN (Convolutional Neural Network)**  
+  Model CNN digunakan untuk mengekstraksi fitur visual dan mengenali pola jaringan otak.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- **Web-Based Demo**  
+  Dapat diakses secara langsung melalui antarmuka web yang interaktif dan mudah digunakan.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Dukungan untuk Dokter Radiologi**  
+  Menyediakan solusi awal yang cepat dan informatif untuk membantu proses identifikasi jenis tumor secara visual.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Teknologi yang Digunakan
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React** – untuk membangun antarmuka web interaktif.
+- **Typescript** – untuk safe code.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Demo Project
+
+https://neuroinsightapp.vercell.app/
+
+## Preview
+
+![App Screenshot](https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/1.png)
+
+![App Screenshot](https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/2.png)
+
+![App Screenshot](https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/3.png)
+
+![App Screenshot](https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/4.png)
+
+![App Screenshot](https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/5.png)
+
+![App Screenshot](https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/6.png)
+
+![App Screenshot](https://github.com/irsyamokta/assets/blob/66763825fb801c9a18ce52fae01d2e88c4f807e8/neuroinsight/7.png)
+
+
+## Instalasi
+
+Berikut langkah-langkah untuk menjalankan **NeuroInsight Web** secara lokal:
+
+1. **Clone Repository**
+
+   ```bash
+   https://github.com/irsyamokta/frontend-neuroinsight.git
+   
+2. **Masuk Directory Proyek**
+
+   ```bash
+   cd frontend-neuroinsight
+   
+3. **Instal Dependensi**
+
+   ```bash
+   npm install
+  
+4. **Buat File .env**
+
+   ```bash
+   VITE_API_BASE_URL=<Endpoint backend prediksi>
+   
+5. **Jalankan Aplikasi**
+
+   ```bash
+   npm run dev
+   
+6. **Buka Browser**
+
+   ```bash
+   http://localhost:5173/
+
+## Author
+
+**Tim NeuroInsight**
