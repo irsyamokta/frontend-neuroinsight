@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const ClassificationReport = () => {
@@ -11,8 +12,26 @@ const ClassificationReport = () => {
     const metrics = ["Precision", "Recall", "F1-Score", "Support"];
     const matrix = [precision, recall, f1, support];
 
+    const [offsetX, setOffsetX] = useState(-5);
+    const yAxisMap = ["1", "2", "3", "4"];
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setOffsetX(-38);
+            }  else {
+                setOffsetX(-40);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+
     const series = classes.map((className, classIndex) => ({
-        name: className, 
+        name: className,
         data: metrics.map((metric, metricIndex) => ({
             x: metric,
             y: matrix[metricIndex][classIndex],
@@ -24,12 +43,13 @@ const ClassificationReport = () => {
             <Chart
                 type="heatmap"
                 height={300}
-                width="100%"
+                width="110%"
                 series={series}
                 options={{
                     chart: {
                         type: "heatmap",
                         toolbar: { show: false },
+                        offsetX: offsetX,
                     },
                     plotOptions: {
                         heatmap: {
@@ -63,7 +83,14 @@ const ClassificationReport = () => {
                         },
                     },
                     yaxis: {
+                        axisBorder: { show: false },
+                        axisTicks: { show: false },
                         labels: {
+                            offsetX: -1,
+                            formatter: ((_: any, index: number) =>
+                                index !== undefined ? yAxisMap[index] : "") as unknown as (
+                                    value: string | number
+                                ) => string,
                             style: { fontSize: "12px" },
                         },
                     },
@@ -72,6 +99,15 @@ const ClassificationReport = () => {
                     },
                 }}
             />
+            {/* Legend manual */}
+            <div className="sm:mt-3 text-xs sm:text-sm text-gray-700 text-center">
+                <p>
+                    <strong>1</strong>: Glioma &nbsp;|&nbsp;
+                    <strong>2</strong>: Meningioma &nbsp;|&nbsp;
+                    <strong>3</strong>: Pituitary &nbsp;|&nbsp;
+                    <strong>4</strong>: No Tumor
+                </p>
+            </div>
         </div>
     );
 };

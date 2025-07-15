@@ -1,3 +1,5 @@
+
+import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const ConfusionMatrix = () => {
@@ -9,25 +11,47 @@ const ConfusionMatrix = () => {
         [4, 2, 1, 293],
     ];
 
-    const series = labels.map((label, rowIndex) => ({
-        name: label,
-        data: matrix[rowIndex].map((value, colIndex) => ({
-            x: labels[colIndex],
-            y: value,
-        })),
-    })).reverse();
+    const yAxisMap = ["4", "3", "2", "1"];
+    const [offsetX, setOffsetX] = useState(-5);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 375) {
+                setOffsetX(-48);
+            } else if (window.innerWidth <= 1280) {
+                setOffsetX(-51);
+            } else {
+                setOffsetX(-55);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const series = labels
+        .map((label, rowIndex) => ({
+            name: label,
+            data: matrix[rowIndex].map((value, colIndex) => ({
+                x: labels[colIndex],
+                y: value,
+            })),
+        }))
+        .reverse();
 
     return (
-        <div className="w-full mt-6 rounded-xl">
+        <div className="w-full mt-6 rounded-xl px-1 sm:px-2 2xl:px-4">
             <Chart
                 type="heatmap"
-                height={350}
-                width="100%"
+                height={300}
+                width="120%"
                 series={series}
                 options={{
                     chart: {
                         type: "heatmap",
                         toolbar: { show: false },
+                        offsetX: offsetX,
                     },
                     plotOptions: {
                         heatmap: {
@@ -38,39 +62,46 @@ const ConfusionMatrix = () => {
                                     { from: 101, to: 300, name: "Medium", color: "#2777b8" },
                                     { from: 301, to: 500, name: "High", color: "#095fe3" },
                                 ],
-                            }
+                            },
                         },
                     },
                     dataLabels: {
                         enabled: true,
-                        style: {
-                            colors: ["#000"],
-                            fontWeight: "regular",
-                        },
+                        style: { colors: ["#000"], fontWeight: "regular" },
                     },
                     xaxis: {
                         categories: labels,
                         labels: {
-                            style: {
-                                fontSize: "12px",
-                            },
+                            rotate: -45,
+                            style: { fontSize: "11px" },
                         },
                     },
                     yaxis: {
+                        axisBorder: { show: false },
+                        axisTicks: { show: false },
                         labels: {
-                            style: {
-                                fontSize: "12px",
-                            },
+                            offsetX: -1,
+                            formatter: ((_: any, index: number) =>
+                                index !== undefined ? yAxisMap[index] : "") as unknown as (
+                                    value: string | number
+                                ) => string,
+                            style: { fontSize: "12px" },
                         },
                     },
                     legend: {
-                        position: "bottom",
-                        horizontalAlign: "center",
-                        fontSize: "14px",
                         show: false,
                     },
                 }}
             />
+            {/* Legend manual */}
+            <div className="sm:mt-3 text-xs sm:text-sm text-gray-700 text-center">
+                <p>
+                    <strong>1</strong>: Glioma &nbsp;|&nbsp;
+                    <strong>2</strong>: Meningioma &nbsp;|&nbsp;
+                    <strong>3</strong>: Pituitary &nbsp;|&nbsp;
+                    <strong>4</strong>: No Tumor
+                </p>
+            </div>
         </div>
     );
 };
