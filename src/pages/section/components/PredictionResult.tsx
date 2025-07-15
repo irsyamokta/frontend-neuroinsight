@@ -132,7 +132,7 @@ const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
                         >
                             {loading
                                 ? 'Unduh Hasil' : doctorNote.trim() === ''
-                                    ? 'Isi Catatan Dulu'
+                                    ? 'Unduh Hasil'
                                     : 'Unduh Hasil'}
                         </Button>
                     )}
