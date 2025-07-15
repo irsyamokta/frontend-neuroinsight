@@ -53,7 +53,7 @@ const HowItWork: React.FC = () => {
                 </div>
 
                 {/* Content Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                     {/* Accordion */}
                     <div className="space-y-3">
                         {data.map((item) => (
@@ -70,7 +70,7 @@ const HowItWork: React.FC = () => {
                     </div>
 
                     {/* Gambar */}
-                    <div className="hidden sm:flex items-center justify-center">
+                    <div className="hidden lg:flex items-center justify-center">
                         <div className="bg-gray-25 w-full h-80 md:min-h-[455px] rounded-xl flex items-center justify-start overflow-hidden">
                             {currentImage ? (
                                 <img
