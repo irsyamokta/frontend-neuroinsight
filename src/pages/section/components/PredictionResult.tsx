@@ -99,7 +99,7 @@ const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
             {/* Doctor Note */}
             <div className="mb-6">
                 <label htmlFor="note" className="block text-start text-sm sm:text-base font-semibold text-gray-600 mb-2">
-                    Catatan Dokter
+                    Catatan Dokter <span className="text-red-500">*</span>
                 </label>
                 <textarea
                     id="note"
