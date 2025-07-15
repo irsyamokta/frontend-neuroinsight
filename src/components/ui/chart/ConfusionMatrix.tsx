@@ -41,7 +41,7 @@ const ConfusionMatrix = () => {
         .reverse();
 
     return (
-        <div className="w-full mt-6 rounded-xl px-1 sm:px-2 2xl:px-4">
+        <div className="w-full mt-6 rounded-xl px-1 2xl:px-4">
             <Chart
                 type="heatmap"
                 height={300}
