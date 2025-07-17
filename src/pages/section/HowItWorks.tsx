@@ -14,7 +14,7 @@ const HowItWork: React.FC = () => {
             id: "upload",
             title: "Unggah Gambar MRI",
             description:
-                "Pengguna mengunggah citra MRI otak melalui halaman demo. Sistem mendukung format gambar umum seperti JPG, JPEG dan PNG dengan ukuran maksimum 10MB. Proses unggah ini dirancang agar cepat dan mudah.",
+                "Dokter radiologi dapat mengunggah citra MRI otak melalui halaman demo. Sistem mendukung format gambar umum seperti JPG, JPEG dan PNG dengan ukuran maksimum 10MB. Proses unggah ini dirancang agar cepat dan mudah.",
             icon: <TbFileUpload size={32} className="text-primary text-lg mt-1 -ml-1" />,
             image: Image1,
         },
