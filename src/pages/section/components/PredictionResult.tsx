@@ -70,9 +70,6 @@ const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
                                                 fontSize: '16px',
                                                 fontWeight: 600,
                                                 offsetY: 5,
-                                                formatter: function (val: number) {
-                                                    return `${val.toFixed(1)}%`;
-                                                },
                                             },
                                         },
                                     },
@@ -119,7 +116,7 @@ const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
                             prediction={prediction}
                             imageUrl={imagePreview}
                             doctorNote={doctorNote}
-                            timestamp={formattedDate + ' ' + formattedTime}
+                            timestamp={formattedDate + ' | ' + formattedTime}
                         />
                     }
                     fileName={`hasil_prediksi_${prediction.predicted_class}_${new Date().toISOString().slice(0, 10)}.pdf`}
