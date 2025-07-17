@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const ConfusionMatrix = () => {
-    const labels = ["Glioma", "Meningioma", "Pituitary", "No Tumor"];
+    const labels = ["Glioma", "Meningioma", "No Tumor", "Pituitary"];
     const matrix = [
         [293, 6, 0, 1],
         [1, 293, 9, 3],
@@ -16,12 +16,14 @@ const ConfusionMatrix = () => {
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 375) {
+            if (window.innerWidth <= 390) {
                 setOffsetX(-48);
+            } else if (window.innerWidth < 768) {
+                setOffsetX(-52);
             } else if (window.innerWidth <= 1280) {
-                setOffsetX(-51);
-            } else {
                 setOffsetX(-55);
+            } else {
+                setOffsetX(-58);
             }
         };
 
@@ -41,7 +43,7 @@ const ConfusionMatrix = () => {
         .reverse();
 
     return (
-        <div className="w-full mt-6 rounded-xl px-1 2xl:px-4">
+        <div className="w-full -mt-6 xl:-mt-4 xl:px-4 rounded-xl">
             <Chart
                 type="heatmap"
                 height={300}
@@ -94,12 +96,12 @@ const ConfusionMatrix = () => {
                 }}
             />
             {/* Legend manual */}
-            <div className="sm:mt-3 text-xs sm:text-sm text-gray-700 text-center">
+            <div className="sm:mt-2 text-xs text-gray-700 text-center">
                 <p>
                     <strong>1</strong>: Glioma &nbsp;|&nbsp;
                     <strong>2</strong>: Meningioma &nbsp;|&nbsp;
-                    <strong>3</strong>: Pituitary &nbsp;|&nbsp;
-                    <strong>4</strong>: No Tumor
+                    <strong>3</strong>: No Tumor &nbsp;|&nbsp;
+                    <strong>4</strong>: Pituitary
                 </p>
             </div>
         </div>

@@ -15,7 +15,7 @@ const validationAccuracy = () => {
     ];
 
     return (
-        <div className="w-full max-w-[350px] sm:max-w-[400px] mx-auto">
+        <div className="w-full max-w-[350px] sm:max-w-[400px] mx-auto px-2">
             <Chart
                 options={{
                     chart: { type: "line", toolbar: { show: false } },

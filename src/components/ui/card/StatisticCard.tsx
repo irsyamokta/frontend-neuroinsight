@@ -45,15 +45,34 @@ const cardStatistics = [
 
 const StatisticCard = () => {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cardStatistics.map((card, idx) => (
-                <InfoCard
-                    key={idx}
-                    title={card.title}
-                    description={card.description}
-                    content={card.content}
-                />
-            ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6">
+            {cardStatistics.map((card, idx) => {
+                const isLast = idx === cardStatistics.length - 1;
+                const isOdd = cardStatistics.length % 2 !== 0;
+
+                const shouldCenter = isOdd && isLast;
+
+                return (
+                    <div
+                        key={idx}
+                        className={shouldCenter
+                            ? 'sm:col-span-2 lg:col-span-1 sm:flex sm:justify-center'
+                            : ''
+                        }
+                    >
+                        <div className={shouldCenter
+                            ? 'w-full sm:max-w-md lg:max-w-none'
+                            : ''
+                        }>
+                            <InfoCard
+                                title={card.title}
+                                description={card.description}
+                                content={card.content}
+                            />
+                        </div>
+                    </div>
+                );
+            })}
         </div>
     )
 };

@@ -13,14 +13,18 @@ const ClassificationReport = () => {
     const matrix = [precision, recall, f1, support];
 
     const [offsetX, setOffsetX] = useState(-5);
-    const yAxisMap = ["1", "2", "3", "4"];
+    const yAxisMap = ["4", "3", "2", "1"];
 
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                setOffsetX(-38);
-            }  else {
-                setOffsetX(-40);
+            if (window.innerWidth <= 390) {
+                setOffsetX(-48);
+            } else if (window.innerWidth < 768) {
+                setOffsetX(-52);
+            } else if (window.innerWidth <= 1280) {
+                setOffsetX(-55);
+            } else {
+                setOffsetX(-58);
             }
         };
 
@@ -36,14 +40,14 @@ const ClassificationReport = () => {
             x: metric,
             y: matrix[metricIndex][classIndex],
         })),
-    }));
+    })).reverse();
 
     return (
-        <div className="w-full mt-6 rounded-xl">
+        <div className="w-full -mt-6 xl:-mt-4 xl:px-4 rounded-xl">
             <Chart
                 type="heatmap"
                 height={300}
-                width="110%"
+                width="120%"
                 series={series}
                 options={{
                     chart: {
@@ -100,12 +104,12 @@ const ClassificationReport = () => {
                 }}
             />
             {/* Legend manual */}
-            <div className="sm:mt-3 text-xs sm:text-sm text-gray-700 text-center">
+            <div className="sm:mt-2 text-xs text-gray-700 text-center">
                 <p>
                     <strong>1</strong>: Glioma &nbsp;|&nbsp;
                     <strong>2</strong>: Meningioma &nbsp;|&nbsp;
-                    <strong>3</strong>: Pituitary &nbsp;|&nbsp;
-                    <strong>4</strong>: No Tumor
+                    <strong>3</strong>: No Tumor &nbsp;|&nbsp;
+                    <strong>4</strong>: Pituitary
                 </p>
             </div>
         </div>
