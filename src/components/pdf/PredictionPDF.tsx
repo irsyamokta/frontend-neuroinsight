@@ -119,8 +119,8 @@ const styles = StyleSheet.create({
 
     // Score Comparison
     scoreSection: {
-        borderTopWidth: 1,
-        borderColor: '#ccc',
+        borderTopWidth: 2,
+        borderColor: '#eee',
         borderStyle: 'dashed',
         paddingTop: 12,
         marginTop: 24,
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
     labelPrimary: {
         fontSize: 10,
         fontWeight: 'bold',
-        marginLeft: 20,
+        // marginLeft: 20,
     },
     labelSecondary: {
         fontSize: 9,
@@ -191,8 +191,8 @@ const styles = StyleSheet.create({
     // Insight & Catatan Dokter
     sectionInsight: {
         marginBottom: 16,
-        borderBottomWidth: 1,
-        borderColor: '#ccc',
+        borderBottomWidth: 2,
+        borderColor: '#eee',
         borderStyle: 'dashed',
     },
     paragraph: {
@@ -227,15 +227,22 @@ const PredictionPDF = ({ prediction, imageUrl, doctorNote, timestamp }: Predicti
 
     const top = scores[0];
 
+    const marginLeftMap: Record<string, number> = {
+        Glioma: 21,
+        Meningioma: 11,
+        'No Tumor': 17,
+        Pituitary: 19,
+    };
+
     return (
         <Document>
             <Page size="A4" style={styles.page}>
-                {/* ✅ Background */}
+                {/* Background */}
                 <View style={styles.backgroundWrapper}>
                     <Image src={watermark} style={styles.background} />
                 </View>
 
-                {/* ✅ Foreground Content */}
+                {/* Foreground Content */}
                 <View style={styles.contentWrapper}>
                     {/* Header */}
                     <View style={styles.header}>
@@ -258,7 +265,7 @@ const PredictionPDF = ({ prediction, imageUrl, doctorNote, timestamp }: Predicti
                         </View>
                         <View style={styles.rightBox}>
                             <Text style={styles.diagLabel}>Didapatkan diagnosa</Text>
-                            <Text style={styles.diagValue}>{top.label} Tumor</Text>
+                            <Text style={styles.diagValue}>{top.label}</Text>
                         </View>
                     </View>
 
@@ -272,7 +279,15 @@ const PredictionPDF = ({ prediction, imageUrl, doctorNote, timestamp }: Predicti
                                     {top.value}%
                                 </Text>
                             </View>
-                            <Text style={styles.labelPrimary}>{top.label}</Text>
+                            {/* <Text style={styles.labelPrimary}>{top.label}</Text> */}
+                            <Text
+                                style={[
+                                    styles.labelPrimary,
+                                    { marginLeft: marginLeftMap[top.label] || 0 }
+                                ]}
+                            >
+                                {top.label}
+                            </Text>
                         </View>
 
                         {/* Kanan: Other Scores */}
