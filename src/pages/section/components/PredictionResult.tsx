@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import Chart from 'react-apexcharts';
 import { format } from 'date-fns';
@@ -13,12 +13,20 @@ interface Props {
 
 const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
     const [doctorNote, setDoctorNote] = useState('');
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setVisible(true);
+        }, 10);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     const {
         predicted_class,
         information,
         probabilities,
-        metadata,
     } = prediction;
 
     const scores = [
@@ -28,13 +36,12 @@ const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
         { label: 'No Tumor', value: probabilities.notumor },
     ].sort((a, b) => b.value - a.value);;
 
-    const date = new Date(metadata.prediction_time);
-    const time = new Date();
+    const date = new Date();
     const formattedDate = format(date, 'EEEE, dd MMMM yyyy', { locale: id });
-    const formattedTime = format(time, 'HH:mm', { locale: id });
+    const formattedTime = format(date, 'HH:mm', { locale: id });
 
     return (
-        <div className="mt-6">
+        <div className={`mt-6 transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
             {/* Metadata */}
             <div className="flex justify-between text-sm mb-6">
                 <div className="flex flex-col items-start">
@@ -50,7 +57,7 @@ const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
             {/* Diagnosis */}
             <div className="text-center mb-8">
                 <p className="text-gray-600">Diagnosis</p>
-                <h3 className="text-2xl font-semibold capitalize">{predicted_class} Tumor</h3>
+                <h3 className="text-2xl font-semibold capitalize">{predicted_class}</h3>
             </div>
 
             {/* Confidence Score */}
@@ -60,7 +67,7 @@ const PredictionResult: React.FC<Props> = ({ prediction, imagePreview }) => {
                     <div key={idx} className="flex flex-col items-center">
                         <Chart
                             options={{
-                                chart: { type: 'radialBar', sparkline: { enabled: true } },
+                                chart: { type: 'radialBar', sparkline: { enabled: true }, animations: { enabled: false } },
                                 plotOptions: {
                                     radialBar: {
                                         hollow: { size: '50%' },
