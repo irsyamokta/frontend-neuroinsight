@@ -1,38 +1,17 @@
-import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const ClassificationReport = () => {
     const classes = ["glioma", "meningioma", "notumor", "pituitary"];
 
-    const precision = [0.98, 0.97, 0.98, 0.99];
-    const recall = [0.98, 0.96, 1.00, 0.98];
-    const f1 = [0.98, 0.97, 0.99, 0.98];
+    const precision = [1.00, 0.97, 0.99, 0.99];
+    const recall = [0.97, 0.98, 1.00, 1.00];
+    const f1 = [0.99, 0.97, 0.99, 1.00];
     const support = [300, 306, 405, 300];
 
     const metrics = ["Precision", "Recall", "F1-Score", "Support"];
     const matrix = [precision, recall, f1, support];
 
-    const [offsetX, setOffsetX] = useState(-5);
     const yAxisMap = ["4", "3", "2", "1"];
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 390) {
-                setOffsetX(-48);
-            } else if (window.innerWidth < 768) {
-                setOffsetX(-52);
-            } else if (window.innerWidth <= 1280) {
-                setOffsetX(-55);
-            } else {
-                setOffsetX(-58);
-            }
-        };
-
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
 
     const series = classes.map((className, classIndex) => ({
         name: className,
@@ -43,17 +22,17 @@ const ClassificationReport = () => {
     })).reverse();
 
     return (
-        <div className="w-full -mt-6 xl:-mt-4 xl:px-4 rounded-xl">
+        <div className="w-full flex flex-col items-center justify-center -mt-6 xl:-mt-4 rounded-xl">
             <Chart
                 type="heatmap"
                 height={300}
-                width="120%"
+                width="130%"
                 series={series}
                 options={{
                     chart: {
                         type: "heatmap",
                         toolbar: { show: false },
-                        offsetX: offsetX,
+                        offsetX: -18,
                     },
                     plotOptions: {
                         heatmap: {

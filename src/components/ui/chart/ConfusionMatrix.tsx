@@ -1,36 +1,16 @@
 
-import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 
 const ConfusionMatrix = () => {
     const labels = ["Glioma", "Meningioma", "No Tumor", "Pituitary"];
     const matrix = [
-        [293, 6, 0, 1],
-        [1, 293, 9, 3],
+        [292, 8, 0, 0],
+        [0, 299, 5, 2],
         [0, 0, 405, 0],
-        [4, 2, 1, 293],
+        [0, 1, 0, 299],
     ];
 
     const yAxisMap = ["4", "3", "2", "1"];
-    const [offsetX, setOffsetX] = useState(-5);
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth <= 390) {
-                setOffsetX(-48);
-            } else if (window.innerWidth < 768) {
-                setOffsetX(-52);
-            } else if (window.innerWidth <= 1280) {
-                setOffsetX(-55);
-            } else {
-                setOffsetX(-58);
-            }
-        };
-
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
 
     const series = labels
         .map((label, rowIndex) => ({
@@ -43,17 +23,17 @@ const ConfusionMatrix = () => {
         .reverse();
 
     return (
-        <div className="w-full -mt-6 xl:-mt-4 xl:px-4 rounded-xl">
+        <div className="w-full flex flex-col items-center justify-center -mt-6 xl:-mt-4 rounded-xl">
             <Chart
                 type="heatmap"
                 height={300}
-                width="120%"
+                width="130%"
                 series={series}
                 options={{
                     chart: {
                         type: "heatmap",
                         toolbar: { show: false },
-                        offsetX: offsetX,
+                        offsetX: -15,
                     },
                     plotOptions: {
                         heatmap: {

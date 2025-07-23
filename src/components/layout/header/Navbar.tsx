@@ -34,7 +34,7 @@ const Navbar = () => {
                 
                 {/* Social Media */}
                 <div className="hidden lg:flex items-center space-x-4">
-                    <a href="https://colab.research.google.com/drive/1-FwGli5zLyz0wfPZNH7a0XS-14_VyyOh?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 text-gray-700 hover:text-primary">
+                    <a href="https://colab.research.google.com/drive/1MU4ql2vNMBxWMJkAXCrWMZGEd6NrVQJh?usp=sharing" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 text-gray-700 hover:text-primary">
                         <SiGooglecolab size={24} className="text-lg" />
                         <span>GColab</span>
                     </a>

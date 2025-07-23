@@ -2,8 +2,17 @@ import ConfusionMatrix from "../chart/ConfusionMatrix";
 import ValidationAccuracy from "../chart/ValidationAccuracy";
 import ClassificationReport from "../chart/ClassificationReport";
 import InfoCard from "./InfoCard";
+import AccuracyChart from "../chart/AccuracyChart";
 
 const cardPerformance = [
+    {
+        title: "Akurasi Model",
+        description:
+            "Akurasi model adalah metrik yang mengukur seberapa baik model dapat mengenali kelas dalam data uji. Nilai akurasi yang tinggi menunjukkan bahwa model dapat dengan baik mengenali kelas dari citra MRI otak.",
+        content: (
+            <AccuracyChart />
+        ),
+    },
     {
         title: "Training & Validation Accuracy per Epoch",
         description:
@@ -32,25 +41,23 @@ const cardPerformance = [
 
 const StatisticCard = () => {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2 md:gap-6">
             {cardPerformance.map((card, idx) => {
                 const isLast = idx === cardPerformance.length - 1;
-                const isOdd = cardPerformance.length % 2 !== 0;
+                const isOdd = cardPerformance.length % 3 !== 0;
 
                 const shouldCenter = isOdd && isLast;
 
                 return (
                     <div
                         key={idx}
-                        className={shouldCenter
-                            ? 'sm:col-span-2 lg:col-span-1 sm:flex sm:justify-center'
-                            : ''
+                        className={
+                            shouldCenter
+                                ? "md:col-span-1 lg:col-span-full 2xl:col-span-1 flex justify-center"
+                                : ""
                         }
                     >
-                        <div className={shouldCenter
-                            ? 'w-full sm:max-w-md lg:max-w-none'
-                            : ''
-                        }>
+                        <div className={shouldCenter ? "w-full sm:max-w-sm md:max-w-md" : ""}>
                             <InfoCard
                                 title={card.title}
                                 description={card.description}
